@@ -991,23 +991,27 @@ select {
   bottom: 0vh;
 }
 
-.fwd img,
-.bwd img {
-  width: 1vw;
+.carousel .fwd img,
+.carousel .bwd img {
+  width: 10vw;
+  object-fit: contain;
+  max-width: 30px;
+  padding: 0;
   object-fit: contain;
 }
 
 .fwd {
   /* fwd knappen skal lægge sig mod højre, hvis man gør font størrelsen meget lille på den, vil det blive et problem uden flex-end          */
   justify-content: flex-start;
-  right: 1rem;
+  right: -3rem;
 }
 
 .bwd {
-  left: 1rem;
+  left: -3rem;
   z-index: 1;
   justify-content: flex-end;
 }
+s
 
 /*--- VISNING AF BILLEDER STOR/LILLE ---*/
 
@@ -1834,7 +1838,7 @@ footer {
   /*---------- GENERELLE INDSTILLINGER -------------*/
   p {
     color: #403f3f;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -2277,8 +2281,16 @@ footer {
     cursor: pointer;
   }
 
-  .fwd img,
-  .bwd img {
+  .fwd {
+    right: 1rem;
+  }
+
+  .bwd {
+    left: 1rem;
+  }
+
+  .carousel .fwd img,
+  .carousel .bwd img {
     cursor: pointer;
   }
 
