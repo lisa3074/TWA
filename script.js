@@ -7,11 +7,16 @@ const koncertUrl = "https://lisabianca.dk/eksamen2/wordpress/wp-json/wp/v2/konce
 const bioUrl = "https://lisabianca.dk/eksamen2/wordpress/wp-json/wp/v2/biografi";
 const kontaktUrl = "https://lisabianca.dk/eksamen2/wordpress/wp-json/wp/v2/kontakt"; */
 
-const url = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/udgivelser?per_page=100";
-const trackUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/lyric?per_page=100";
-const videoUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/videoer?per_page=100";
-const billedeUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/billede?per_page=100";
-const koncertUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/koncert?per_page=100";
+const url =
+  "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/udgivelser?per_page=100";
+const trackUrl =
+  "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/lyric?per_page=100";
+const videoUrl =
+  "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/videoer?per_page=100";
+const billedeUrl =
+  "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/billede?per_page=100";
+const koncertUrl =
+  "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/koncert?per_page=100";
 const bioUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/biografi";
 const kontaktUrl = "https://thewhitealbum.dk/wordpress/wp-json/wp/v2/kontakt";
 
@@ -49,34 +54,35 @@ document.addEventListener("DOMContentLoaded", tjek);
 function tjek() {
   document.removeEventListener("DOMContentLoaded", tjek);
   console.log("tjek");
+  setHeight();
   //Hvis index->
   if (index) {
-    document.querySelector(".pil_ned").addEventListener("click", function() {
+    document.querySelector(".pil_ned").addEventListener("click", function () {
       index.classList.add("fade_out");
       //Der er sat en time-out for at index kan nå at fade ud inden
-      setTimeout(function() {
+      setTimeout(function () {
         location.href = "koncerter.html";
       }, 500);
     });
-    document.querySelector("body").addEventListener("mousewheel", function() {
+    document.querySelector("body").addEventListener("mousewheel", function () {
       //Der er sat en time-out for at index kan nå at fade ud inden
       index.classList.add("fade_out");
-      setTimeout(function() {
+      setTimeout(function () {
         location.href = "koncerter.html";
       }, 500);
     });
 
     // For at firefox kan fire scroll-event
-    document.addEventListener("DOMMouseScroll", function() {
+    document.addEventListener("DOMMouseScroll", function () {
       index.classList.add("fade_out");
-      setTimeout(function() {
+      setTimeout(function () {
         location.href = "koncerter.html";
       }, 500);
     });
 
-    document.querySelector("body").addEventListener("touchmove", function() {
+    document.querySelector("body").addEventListener("touchmove", function () {
       index.classList.add("fade_out");
-      setTimeout(function() {
+      setTimeout(function () {
         location.href = "koncerter.html";
       }, 500);
     });
@@ -93,7 +99,7 @@ function tjek() {
     billedeStorrelse();
     document.querySelector("#billede_liste").classList.remove("hide");
     document.querySelector("#billede_liste").classList.add("height");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector("#billede_liste").classList.remove("height");
     }, 2500);
     changeCheckedPics();
@@ -101,7 +107,7 @@ function tjek() {
   }
   if (videoer || billede) {
     //Sorteringsfunktion (drop down)
-    document.querySelector(".dropD").addEventListener("change", function() {
+    document.querySelector(".dropD").addEventListener("change", function () {
       console.log("filtreingsdrop");
       filtreringDrop();
     });
@@ -112,7 +118,7 @@ function tjek() {
     filter = "alle";
     document.querySelector("#video_liste").classList.remove("hide");
     document.querySelector("#video_liste").classList.add("opacity_delay");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector("#video_liste").classList.remove("opacity_delay");
     }, 3500);
     changeChecked();
@@ -121,20 +127,27 @@ function tjek() {
   if (koncert) {
     document.querySelector("#koncert_liste").classList.remove("hide");
     document.querySelector("#koncert_liste").classList.add("height");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector("#koncert_liste").classList.remove("height");
     }, 2500);
     dropDownMenu();
     sorterKoncerter();
   }
 
-  if (UdgivelserDetaljer || videoer || billede || koncert || biografi || kontakt) {
+  if (
+    UdgivelserDetaljer ||
+    videoer ||
+    billede ||
+    koncert ||
+    biografi ||
+    kontakt
+  ) {
     json();
   }
   if (kontakt) {
     document.querySelector(".move").classList.remove("hide");
     document.querySelector(".move").classList.add("left_fast");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector(".move").classList.remove("left_fast");
     }, 2500);
   }
@@ -142,7 +155,7 @@ function tjek() {
   if (UdgivelserDetaljer) {
     document.querySelector(".content").classList.remove("hide");
     document.querySelector(".content").classList.add("small_big");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector(".content").classList.remove("small_big");
     }, 3500);
   }
@@ -150,12 +163,12 @@ function tjek() {
   if (biografi) {
     document.querySelector(".content").classList.remove("hide");
     document.querySelector(".content").classList.add("opacity_semi");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector(".content").classList.remove("opacity_semi");
     }, 2500);
     document.querySelector(".scroll").classList.remove("hide");
     document.querySelector(".scroll").classList.add("height");
-    setInterval(function() {
+    setInterval(function () {
       document.querySelector(".scroll").classList.remove("height");
     }, 2500);
   }
@@ -169,13 +182,26 @@ function tjek() {
     fordelDesk();
   }
 }
+function setHeight() {
+  console.log("setHeight");
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  console.log(vh);
+}
 
 // ----------- FORDELERE PÅ SIDER (MOBIL/DESKTOP) ------------------
 
 function fordel() {
   console.log("fordel");
   //Specificerede sider, da index ikke har en burgermenu (melder ellers fejl i konsol)
-  if (koncert || kontakt || biografi || UdgivelserDetaljer || videoer || billede) {
+  if (
+    koncert ||
+    kontakt ||
+    biografi ||
+    UdgivelserDetaljer ||
+    videoer ||
+    billede
+  ) {
     document.querySelector(".burgermenu").classList.remove("hide");
     document.querySelector(".burgermenu").classList.add("opacity");
     document.querySelector("#menuknap").addEventListener("click", burgerMenu);
@@ -183,7 +209,7 @@ function fordel() {
 
   if (koncert) {
     //Sorteringsfunktion (drop down) kommende/overståede koncerter
-    document.querySelector(".dater").addEventListener("change", function() {
+    document.querySelector(".dater").addEventListener("change", function () {
       console.log("koncerter drop");
 
       //Når værdien af den valgte option er overståede ->
@@ -200,7 +226,14 @@ function fordel() {
 
 function fordelDesk() {
   //Specificerede sider, da index ikke har en menu (melder ellers fejl i konsol)
-  if (kontakt || biografi || UdgivelserDetaljer || videoer || billede || koncert) {
+  if (
+    kontakt ||
+    biografi ||
+    UdgivelserDetaljer ||
+    videoer ||
+    billede ||
+    koncert
+  ) {
     console.log("fordelDesk");
     dropDownMenu();
   }
@@ -280,7 +313,7 @@ function sorterKoncerter() {
   let valgt = document.querySelector(".valgt_kategori");
   console.log("sorterKoncerter");
   //lytter på klik på kommende
-  document.querySelector(".kommende").addEventListener("click", function() {
+  document.querySelector(".kommende").addEventListener("click", function () {
     //roterer pil 180deg (tilbage)
     document.querySelector(".stor_pil").classList.remove("rotate_arrow");
     //Starter animation på overstået
@@ -300,7 +333,7 @@ function sorterKoncerter() {
     omraade();
   });
 
-  document.querySelector(".overstaet").addEventListener("click", function() {
+  document.querySelector(".overstaet").addEventListener("click", function () {
     console.log("Overståede");
     document.querySelector(".stor_pil").classList.add("rotate_arrow");
     document.querySelector(".overstaet").classList.remove("color");
@@ -315,11 +348,13 @@ function sorterKoncerter() {
     hentOverstaedeKoncerter();
   });
 
-  document.querySelector(".geoSorteringKoncerter").addEventListener("change", function() {
-    //Når drop down (geo sortering mobil) ændrer option - >
-    omraade();
-  });
-  document.querySelector(".sted").addEventListener("change", function() {
+  document
+    .querySelector(".geoSorteringKoncerter")
+    .addEventListener("change", function () {
+      //Når drop down (geo sortering mobil) ændrer option - >
+      omraade();
+    });
+  document.querySelector(".sted").addEventListener("change", function () {
     //Når drop down (geo sortering desktop) ændrer option - >
     omraadeDesk();
   });
@@ -327,11 +362,15 @@ function sorterKoncerter() {
 
 function omraade() {
   //ryd op
-  document.querySelector(".dater").removeEventListener("change", function() {});
-  document.querySelector(".geoSorteringKoncerter").removeEventListener("change", function() {});
+  document
+    .querySelector(".dater")
+    .removeEventListener("change", function () {});
+  document
+    .querySelector(".geoSorteringKoncerter")
+    .removeEventListener("change", function () {});
 
   document.querySelector("#koncert_liste").classList.add("opacity");
-  setTimeout(function() {
+  setTimeout(function () {
     document.querySelector("#koncert_liste").classList.remove("opacity");
   }, 1000);
 
@@ -346,10 +385,10 @@ function omraade() {
 
 function omraadeDesk() {
   //ryd op
-  document.querySelector(".sted").removeEventListener("change", function() {});
+  document.querySelector(".sted").removeEventListener("change", function () {});
   document.querySelector("#koncert_liste").classList.add("opacity");
   document.querySelector(".if_none").classList.add("opacity");
-  setTimeout(function() {
+  setTimeout(function () {
     document.querySelector(".if_none").classList.remove("opacity");
     document.querySelector("#koncert_liste").classList.remove("opacity");
   }, 1000);
@@ -364,7 +403,9 @@ function omraadeDesk() {
 
 function hentKommendeKoncerter() {
   //ryd op
-  document.querySelector(".kommende").removeEventListener("click", hentKommendeKoncerter);
+  document
+    .querySelector(".kommende")
+    .removeEventListener("click", hentKommendeKoncerter);
   console.log("hentKommendeKoncerter");
   const koncertListe = document.querySelector("#koncert_liste");
 
@@ -387,13 +428,16 @@ function hentKommendeKoncerter() {
   koncerter.sort((a, b) => new Date(a.dato) - new Date(b.dato));
   console.log("sorter dato");
   //For hver koncert (post) så->
-  koncerter.forEach(show => {
+  koncerter.forEach((show) => {
     //definering af i hvilken rækkefølge dags dato og dato i json-fil skal læses ind (skal være sammenlignelige)
     let iDag = new Date(y, m, d);
     let koncertDato = new Date(show.aar, show.maaned, show.dag);
 
     //Hvis koncertdate er større end i dag og geofilter matcher det valgte filter ->
-    if ((koncertDato > iDag && show.geografi == filter) || (koncertDato > iDag && filter == "alle")) {
+    if (
+      (koncertDato > iDag && show.geografi == filter) ||
+      (koncertDato > iDag && filter == "alle")
+    ) {
       console.log("kommende koncerter");
       //definering af det indhold, som er i skabelonen
       const klon = koncertSkabelon.cloneNode(true).content;
@@ -435,8 +479,12 @@ function hentOverstaedeKoncerter() {
   //Se ovenstående kommentering
   console.log("hentOverstaedeKoncerter");
   document.querySelector(".geomobil").value = "alle";
-  document.querySelector(".dater").removeEventListener("change", function() {});
-  document.querySelector(".overstaet").removeEventListener("click", hentOverstaedeKoncerter);
+  document
+    .querySelector(".dater")
+    .removeEventListener("change", function () {});
+  document
+    .querySelector(".overstaet")
+    .removeEventListener("click", hentOverstaedeKoncerter);
   const koncertListe = document.querySelector("#koncert_liste");
   koncertListe.innerHTML = "";
   const koncertSkabelon = document.querySelector(".events");
@@ -448,7 +496,7 @@ function hentOverstaedeKoncerter() {
   //sorterer datoer inden vi looper det ind i kloner
   koncerter.sort((a, b) => new Date(b.dato) - new Date(a.dato));
 
-  koncerter.forEach(show => {
+  koncerter.forEach((show) => {
     let iDag = new Date(y, m, d);
     let koncertDato = new Date(show.aar, show.maaned, show.dag);
 
@@ -497,8 +545,8 @@ function message() {
 
 function hentBilleder() {
   //Ryd op
-  document.querySelector(".kryds").removeEventListener("click", function() {});
-  document.querySelector(".pics").removeEventListener("click", function() {});
+  document.querySelector(".kryds").removeEventListener("click", function () {});
+  document.querySelector(".pics").removeEventListener("click", function () {});
   console.log("hentBilleder");
   const billedeListe = document.querySelector("#billede_liste");
   billedeListe.innerHTML = "";
@@ -507,7 +555,7 @@ function hentBilleder() {
   const pics = document.querySelector(".pics_container");
 
   billedeListe.classList.add("opacity");
-  setTimeout(function() {
+  setTimeout(function () {
     billedeListe.classList.remove("opacity");
   }, 1000);
 
@@ -516,7 +564,7 @@ function hentBilleder() {
   count = 0;
 
   //For hvert billede i json-filen->
-  billeder.forEach(pic => {
+  billeder.forEach((pic) => {
     //Hvis billedets kategori er det samme som filteret (Den kategori der er klikket på) eller hvis filteret er alle ->
     if (pic.kategori == filter || filter == "alle") {
       //Tæl en op for hver gang et billede opfylder kravet
@@ -529,7 +577,7 @@ function hentBilleder() {
       klon.querySelector("img").setAttribute("id", count);
       klon.querySelector("img").alt = pic.billeder.post_title;
       //Ved klik på billedet ->
-      klon.firstElementChild.addEventListener("click", function() {
+      klon.firstElementChild.addEventListener("click", function () {
         //Definer id som billedets id - 1
         let id = this.getAttribute("id") - 1;
         console.log(-id + "00");
@@ -539,7 +587,7 @@ function hentBilleder() {
 
         pics.classList.add("small_big_open");
         popUpBil.classList.add("opacity_fast");
-        setTimeout(function() {
+        setTimeout(function () {
           pics.classList.remove("small_big_open");
           popUpBil.classList.remove("opacity_fast");
         }, 1000);
@@ -572,7 +620,7 @@ function close() {
   //Gem popup og reset caroCurrentNum (til 0)
   pics.classList.add("small_big_close");
   popUpBil.classList.add("opacity_reverse");
-  setTimeout(function() {
+  setTimeout(function () {
     pics.classList.remove("small_big_close");
     popUpBil.classList.remove("opacity_reverse");
     popUpBil.classList.add("hide");
@@ -585,12 +633,12 @@ function close() {
 function koer() {
   console.log("koer");
   //Ved klik på -> send variabel med videre
-  document.querySelector(".fwd").addEventListener("click", function() {
+  document.querySelector(".fwd").addEventListener("click", function () {
     fwd();
     console.log("fwd klik");
   });
   //document.querySelector(".bwd").addEventListener("click", bwd);
-  document.querySelector(".bwd").addEventListener("click", function() {
+  document.querySelector(".bwd").addEventListener("click", function () {
     bwd();
     console.log("bwd klik");
   });
@@ -603,11 +651,12 @@ function buildCarousel() {
   document.querySelector(".pics").style.width = `${count * 100}%`;
 
   //for hver billede i array'et ->
-  billeder.forEach(pic => {
+  billeder.forEach((pic) => {
     //Hvis billedets kategori passer med det valgte filter
     if (pic.kategori == filter || filter == "alle") {
       console.log("buildcaro");
-      const theClone = document.querySelector("template").cloneNode(true).content;
+      const theClone = document.querySelector("template").cloneNode(true)
+        .content;
       theClone.querySelector("img").src = pic.billeder.guid;
       theClone.querySelector("img").alt = pic.billeder.post_title;
       theClone.querySelector("img").classList.add("minus");
@@ -620,8 +669,8 @@ function buildCarousel() {
 
 function fwd() {
   //Ryd op
-  document.querySelector(".fwd").removeEventListener("click", function() {});
-  document.querySelector(".bwd").removeEventListener("click", function() {});
+  document.querySelector(".fwd").removeEventListener("click", function () {});
+  document.querySelector(".bwd").removeEventListener("click", function () {});
   // Hvis karrusellens tæller er mindre end antallet af billeder minus 1 ->
   if (caroCurrentNum < count - 1) {
     // lægges en til tælleren
@@ -633,8 +682,8 @@ function fwd() {
 
 function bwd() {
   //ryd op
-  document.querySelector(".fwd").removeEventListener("click", function() {});
-  document.querySelector(".bwd").removeEventListener("click", function() {});
+  document.querySelector(".fwd").removeEventListener("click", function () {});
+  document.querySelector(".bwd").removeEventListener("click", function () {});
   console.log("bwd");
   // Hvis karrusellens tæller er større end nul ->
   if (caroCurrentNum > 0) {
@@ -675,10 +724,10 @@ function navigate() {
 function changeCheckedPics() {
   console.log("changeCheckedPics");
   //Lyt for hver radio-button ->
-  document.querySelectorAll(".radio-inline").forEach(radioButton => {
+  document.querySelectorAll(".radio-inline").forEach((radioButton) => {
     console.log("selectorAllPics");
     //Hvis den valgte ændres, så sæt filter til den valgte value
-    radioButton.addEventListener("change", function() {
+    radioButton.addEventListener("change", function () {
       console.log("change filter Pics");
       filter = event.target.value;
       console.log(filter);
@@ -689,13 +738,13 @@ function changeCheckedPics() {
 
 function billedeStorrelse() {
   console.log("billedeStorrelse");
-  document.querySelector(".fwd").removeEventListener("click", function() {});
-  document.querySelector(".bwd").removeEventListener("click", function() {});
+  document.querySelector(".fwd").removeEventListener("click", function () {});
+  document.querySelector(".bwd").removeEventListener("click", function () {});
   let billedeListe = document.querySelector("#billede_liste");
   //Hvis der klikkes på ikonet for lille grid ->
-  document.querySelector(".lille").addEventListener("click", function() {
+  document.querySelector(".lille").addEventListener("click", function () {
     billedeListe.classList.toggle("opacity");
-    setTimeout(function() {
+    setTimeout(function () {
       billedeListe.classList.remove("opacity");
     }, 1500);
 
@@ -708,9 +757,9 @@ function billedeStorrelse() {
     document.querySelector(".stor").classList.remove("hide");
   });
   //Hvis der klikkes på ikonet for stor grid ->
-  document.querySelector(".stor").addEventListener("click", function() {
+  document.querySelector(".stor").addEventListener("click", function () {
     billedeListe.classList.toggle("opacity");
-    setTimeout(function() {
+    setTimeout(function () {
       billedeListe.classList.remove("opacity");
     }, 1500);
     billedeListe.classList.add("grid_stor");
@@ -727,19 +776,19 @@ function hentVideo() {
   //Tøm liste
   videoListe.innerHTML = "";
   //Tjek om den valgte radiobutton ændrer sig ->
-  document.querySelectorAll(".radio-inline").forEach(button => {
+  document.querySelectorAll(".radio-inline").forEach((button) => {
     //Ryd op
-    button.removeEventListener("change", function() {});
+    button.removeEventListener("change", function () {});
   });
   const videoSkabelon = document.querySelector(".videoframe");
 
   videoListe.classList.add("opacity_delay");
-  setTimeout(function() {
+  setTimeout(function () {
     videoListe.classList.remove("opacity_delay");
     console.log("delay");
   }, 3500);
   //For hver video i arrayet->
-  video.forEach(film => {
+  video.forEach((film) => {
     // Hvis videoens kategori passer med valgte filter eller filteret alle ->
     if (film.kategori == filter || filter == "alle") {
       console.log("Video");
@@ -756,10 +805,10 @@ function hentVideo() {
 function changeChecked() {
   console.log("changeChecked");
   //Lyt for hver radio-button ->
-  document.querySelectorAll(".radio-inline").forEach(button => {
+  document.querySelectorAll(".radio-inline").forEach((button) => {
     console.log("selectorAll");
     //Hvis den valgte ændres, så sæt filter til den valgte value
-    button.addEventListener("change", function() {
+    button.addEventListener("change", function () {
       console.log("change filter");
       filter = event.target.value;
       console.log(filter);
@@ -776,13 +825,13 @@ function albumSortering(content) {
   console.log("albumSortering");
   const albumSkabelon = document.querySelector(".udgivelsesframe");
   //For hvert album i arrayet
-  albums.forEach(cover => {
+  albums.forEach((cover) => {
     console.log("udgivelse");
     const klon = albumSkabelon.cloneNode(true).content;
     klon.querySelector(".cover_art").src = cover.albumcover.guid;
     klon.querySelector(".album_titel").textContent = cover.udgivelsens_navn;
     //Ved klik på album ->
-    klon.firstElementChild.addEventListener("click", function() {
+    klon.firstElementChild.addEventListener("click", function () {
       hentJsonLyrics();
       visDetalje(cover);
     });
@@ -797,7 +846,7 @@ function visDetalje(cover) {
   let popUp = document.querySelector(".popup_album");
   max.classList.add("small_big_open");
   popUp.classList.add("opacity_fast");
-  setTimeout(function() {
+  setTimeout(function () {
     max.classList.remove("small_big_open");
     popUp.classList.remove("opacity_fast");
   }, 1000);
@@ -835,7 +884,7 @@ function lyrics() {
 
   sange.sort((a, b) => a.tracknummer - b.tracknummer);
   //For hver sang i arrayet
-  sange.forEach(sang => {
+  sange.forEach((sang) => {
     console.log("sang");
     console.log(sang.album_nummer == 3);
     //Hvis albumnummer er det sammen som sangens albumnummer ->
@@ -867,7 +916,7 @@ function luk() {
   let popUp = document.querySelector(".popup_album");
   max.classList.add("small_big_close");
   popUp.classList.add("opacity_reverse");
-  setTimeout(function() {
+  setTimeout(function () {
     max.classList.remove("small_big_close");
     popUp.classList.remove("opacity_reverse");
     popUp.classList.add("hide");
@@ -887,7 +936,7 @@ function luk() {
 function hentBio() {
   console.log("hentBio");
   let bioTekst = document.querySelector(".bio_tekst");
-  biografien.forEach(bio => {
+  biografien.forEach((bio) => {
     bioTekst.textContent = bio.biografi_dansk;
   });
 }
@@ -898,7 +947,7 @@ function hentKontakt() {
   console.log("hentKontakt");
   //console.log(biografien.biografi_dansk);
   let bioTekst = document.querySelector(".bio_tekst");
-  kontakten.forEach(kontaktFelt => {
+  kontakten.forEach((kontaktFelt) => {
     document.querySelector(".navn").textContent = kontaktFelt.navn;
     document.querySelector(".gade").textContent = kontaktFelt.gade;
     document.querySelector(".by").textContent = kontaktFelt.by;
@@ -925,38 +974,48 @@ function filtreringDrop() {
 function dropDownMenu() {
   if (koncert) {
     //Ryd op
-    document.querySelector(".kommende").removeEventListener("click", function() {});
-    document.querySelector(".overstaet").removeEventListener("click", function() {});
+    document
+      .querySelector(".kommende")
+      .removeEventListener("click", function () {});
+    document
+      .querySelector(".overstaet")
+      .removeEventListener("click", function () {});
   }
   //Når musen er over .drop -> vis .dropdown
   console.log("dropDownMenu");
-  document.querySelector(".drop").addEventListener("mouseover", function() {
+  document.querySelector(".drop").addEventListener("mouseover", function () {
     console.log("mouseover på drop");
     document.querySelector(".drop_down").classList.remove("hide");
   });
   //Når musen er over .videoer -> vis .dropdown
-  document.querySelector(".videoer").addEventListener("mouseover", function() {
+  document.querySelector(".videoer").addEventListener("mouseover", function () {
     console.log("mouseover på videoer");
     document.querySelector(".drop_down").classList.remove("hide");
   });
   //Når musen er over .billeder -> vis .dropdown
-  document.querySelector(".billeder").addEventListener("mouseover", function() {
-    console.log("mouseover på billeder");
-    document.querySelector(".drop_down").classList.remove("hide");
-  });
+  document
+    .querySelector(".billeder")
+    .addEventListener("mouseover", function () {
+      console.log("mouseover på billeder");
+      document.querySelector(".drop_down").classList.remove("hide");
+    });
   //Når musen går væk fra .billeder ->
-  document.querySelector(".billeder").addEventListener("mouseleave", function() {
-    console.log("mouseout på drop2");
-    removeDropdown();
-  });
+  document
+    .querySelector(".billeder")
+    .addEventListener("mouseleave", function () {
+      console.log("mouseout på drop2");
+      removeDropdown();
+    });
   //Når musen går væk fra .videoer ->
-  document.querySelector(".videoer").addEventListener("mouseleave", function() {
-    console.log("mouseout på videoer");
-    removeDropdown();
-  });
+  document
+    .querySelector(".videoer")
+    .addEventListener("mouseleave", function () {
+      console.log("mouseout på videoer");
+      removeDropdown();
+    });
 
   //Når der scrolles på body ->
-  document.querySelector("body").addEventListener("mousewheel", function() {
+  document.querySelector("body").addEventListener("mousewheel", function () {
     console.log("scroll på body");
     removeDropdown();
   });
@@ -965,10 +1024,18 @@ function dropDownMenu() {
 function removeDropdown() {
   console.log("removeDropdown");
   //Ryd op
-  document.querySelector(".drop").removeEventListener("mouseover", function() {});
-  document.querySelector(".drop2").removeEventListener("mouseover", function() {});
-  document.querySelector(".drop2").removeEventListener("mouseleave", function() {});
-  document.querySelector("body").removeEventListener("mousewheel", function() {});
+  document
+    .querySelector(".drop")
+    .removeEventListener("mouseover", function () {});
+  document
+    .querySelector(".drop2")
+    .removeEventListener("mouseover", function () {});
+  document
+    .querySelector(".drop2")
+    .removeEventListener("mouseleave", function () {});
+  document
+    .querySelector("body")
+    .removeEventListener("mousewheel", function () {});
   //Gem drop down
   document.querySelector(".drop_down").classList.add("hide");
 }
@@ -1013,15 +1080,15 @@ function burgerMenu() {
     //Gem .content
     document.querySelector(".content").classList.add("hide");
     //Ved klik på hjem -> index
-    document.querySelector(".hjem").addEventListener("click", function() {
+    document.querySelector(".hjem").addEventListener("click", function () {
       location.href = "index.html";
     });
 
     //Sørger for at animationer kører og at burgermenuen lukkes efter der er klikket på et menupunkt.
     //for hvert menupunkt->
-    document.querySelectorAll(".burger li").forEach(menupunkt => {
+    document.querySelectorAll(".burger li").forEach((menupunkt) => {
       //Lyt efter klik
-      menupunkt.addEventListener("click", function() {
+      menupunkt.addEventListener("click", function () {
         document.querySelector(".content").classList.remove("hide");
         //document.querySelector(".burger").classList.add("hide");
         document.querySelector("#menuknap").classList = "fade_in";
