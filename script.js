@@ -212,7 +212,6 @@ function fordel() {
     document.querySelector(".dater").addEventListener("change", function () {
       console.log("koncerter drop");
 
-      //Når værdien af den valgte option er overståede ->
       if (event.target.value == "Overstaede") {
         hentOverstaedeKoncerter();
       }
@@ -1081,7 +1080,7 @@ function burgerMenu() {
     document.querySelector(".content").classList.add("hide");
     //Ved klik på hjem -> index
     document.querySelector(".hjem").addEventListener("click", function () {
-      location.href = "index.html";
+      location.href = "index_dan.html";
     });
 
     //Sørger for at animationer kører og at burgermenuen lukkes efter der er klikket på et menupunkt.
