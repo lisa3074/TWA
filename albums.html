@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Here you will find all the releases of The White Album. You'll also find extra info, such as credits, recording years, songs on a specific album, song lyrics, and links to the album on Spotify and Apple Music.">
+    <meta name="keywords" content="spotify, apple music, band, music, folk, rock, the white album, singer songwriter, releases, song, lyrics">
+    <meta name="og:image" content="https://lisabianca.dk/eksamen/billeder/Squid_Alpha_farve_mobil.png" />
+    <meta name="designer" content="Lisa Bianca Henning Søndergaard | ima@frontnd.ninja">
+
+    <title>THE WHITE ALBUM || ALBUMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta:400|Prompt:200,300&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="favicon.ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon.ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="albums">
+
+    <!--- Template til albums-->
+    <template class="udgivelsesframe">
+        <div class="flex">
+            <img src="" class="cover_art" alt="">
+            <h2 class="album_titel"></h2>
+        </div>
+    </template>
+
+    <!--- Template til trackliste-->
+    <template class="track_liste">
+        <li class="track">&nbsp;</li>
+    </template>
+    <div class="lille_body">
+        <div class="sprog">
+            <a href="udgivelser.html">
+                <p>DAN</p>
+            </a>
+        </div>
+        <header>
+            <nav class="nav">
+                <div class="nav_wrapper">
+                    <a href="index.html">
+                        <div class="logo">
+                            <h1 class="logo_tekst">TheWhiteAlbum</h1>
+                        </div>
+                    </a>
+                    <div class="desk_menu_wrap">
+                        <a href="concerts.html">
+                            <div class="menupunkt konc">
+                                <p class="hov">CONCERTS</p>
+                            </div>
+                        </a>
+
+                        <a href="albums.html">
+                            <div class="menupunkt udg">
+                                <p class="hov valgt">ALBUMS</p>
+                            </div>
+                        </a>
+
+                        <a href="biography.html">
+                            <div class="menupunkt bio">
+                                <p class="hov">BIOGRAPHY</p>
+                            </div>
+                        </a>
+
+                        <div class="menupunkt drop media">
+                            <p class="hov">GALLERY</p>
+                            <div class="drop_down hide">
+
+                                <a href="videos.html">
+                                    <div class="videoer drop2">
+                                        <p class="hov">VIDEOS</p>
+                                    </div>
+                                </a>
+                                <a href="pictures.html">
+                                    <div class="billeder drop2">
+                                        <p class="hov">PICTURES</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="https://thewhitealbum.bigcartel.com" target="_blank" rel="noreferrer">
+                            <div class="menupunkt shop">
+                                <p class="hov">WEBSHOP</p>
+                            </div>
+                        </a>
+                        <a href="contact.html" class="gaa">
+                            <div class="menupunkt kont">
+                                <p class="hov">CONTACT</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--- BURGERMENU -->
+                <nav class="burgermenu">
+                    <h1 class="overskrift">ALBUMS</h1>
+                    <div class="burgerikon">
+                        <img id="menuknap" class="menuknap" alt="Menuknap" src="billeder/burgermenu.svg">
+                        <img id="menuknap1" class="menuknap1" alt="Menuknap" src="billeder/burgerdel1.svg">
+                        <img id="menuknap2" class="menuknap2" alt="Menuknap" src="billeder/burgerdel2.svg">
+                    </div>
+                    <div class="burger hide">
+                        <img src="billeder/home-outline-icon.png" alt="Hjem-ikon" class="hjem">
+                        <div class="sprog_mob">
+                            <a href="udgivelser.html">
+                                <p>DAN</p>
+                            </a></div>
+                        <ul>
+
+
+                            <li class="burgerpunkt koncert_knap"><a href="concerts.html">CONCERTS</a></li>
+
+
+                            <li class="burgerpunkt"><a href="albums.html">ALBUMS</a></li>
+
+
+                            <li class="burgerpunkt"><a href="biography.html">BIOGRAPHY</a></li>
+
+
+                            <li class="burgerpunkt"><a href="videos.html">VIDEOS</a></li>
+
+
+                            <li class="burgerpunkt"><a href="pictures.html">PICTURES</a></li>
+
+
+                            <li class="burgerpunkt"><a href="https://thewhitealbum.bigcartel.com/" target="_blank" rel="noreferrer">WEBSHOP</a></li>
+
+
+                            <li class="burgerpunkt"><a href="contact.html">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </nav>
+        </header>
+        <div class="content hide">
+            <h1 class="desk_overskrift">RELEASES</h1>
+            <!-- HER INDLÆSES ALBUMS -->
+            <section>
+                <article id="udgivelses_liste">
+
+                </article>
+            </section>
+
+            <!-- POPUP MED ALBUMDETALJER -->
+            <section class="popup_album hide">
+                <p class="tilbage">✕</p>
+                <div class="max">
+                    <h1 class="album_titel2"></h1>
+                    <article class="wrapper1">
+                        <img class="cover" alt="Albumcover" src="">
+                        <div class="alle_detaljer">
+                            <div>
+                                <div class="wrapper_detaljer">
+                                    <div class="tekst_detaljer">
+                                        <p class="detaljer">Year: <span class="aarstal"></span></p>
+                                        <p class="detaljer">Tracks: <span class="antal"></span></p>
+                                        <p class="detaljer">Release number: <span class="nr"></span></p>
+                                    </div>
+                                    <div class="icon_wrap">
+                                        <div class="musik_wrap"><a href="https://music.apple.com/dk/artist/the-white-album/556251451?l=da" target="_blank" rel="noreferrer" title="Apple Music">
+                                                <img src="billeder/ikoner/apple_music.jpeg" class="musik_ikon" alt="Apple music"></a>
+                                            <a href="https://open.spotify.com/artist/5JhaDdCfVwK1YJciYM7s6i" target="_blank" rel="noreferrer" title="Spotify"> <img src="billeder/ikoner/spotify.png" class="musik_ikon" alt="Spotify">
+                                            </a></div>
+
+                                        <div class="musik_wrap kob">
+                                            <a href="" target="_blank" rel="noreferrer" title="Køb LP" class="lp"><img src="billeder/ikoner/lp.png" class="musik_ikon lp_billede" alt="Køb LP"></a>
+
+                                            <a href="" target="_blank" rel="noreferrer" title="Køb CD" class="cd"> <img src="billeder/ikoner/cd.png" class="musik_ikon cd_billede" alt="Køb CD">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="detaljer">Credits: <br><span class="credits"></span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="wrapper2">
+                        <div class="tracks">
+                            <h2 class="track_overskrift">Tracks</h2>
+                            <!-- SÆT DENNE TIL NÅR LYRICS ER KLAR -->
+                            <!--<p class="italic">(Klik på titlen for at se teksten)</p>-->
+                            <ol id="track_liste"></ol>
+                        </div>
+                        <a id="tekst">
+                            <div class="baggrund hide">
+                                <div class="lyrics_wrapper">
+                                    <h2 class="sangtitel"></h2>
+                                    <p class="sangtekst"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+
+
+        <!--- FOOTER -->
+        <footer class="hide">
+            <div class="social">
+                <div class="samle">
+
+                    <a href="https://www.youtube.com/channel/UC2Wul42bR3I3tHBuU-CVxlg" target="_blank" rel="noreferrer" title="YouTube">
+                        <img src="billeder/ikoner/youtube.png" alt="social" class="icon"></a>
+
+                    <a href="https://www.facebook.com/thewhitealbummusic" target="_blank" rel="noreferrer" title="Facebook">
+                        <img src="billeder/ikoner/fb.png" alt="social" class="icon"></a>
+
+                    <a href="https://www.instagram.com/thewhitealbummusic/" target="_blank" rel="noreferrer" title="Instagram">
+                        <img src="billeder/ikoner/instagram.png" alt="social" class="icon"></a>
+                </div>
+                <div class="samle">
+                    <a href="https://open.spotify.com/artist/5JhaDdCfVwK1YJciYM7s6i" target="_blank" rel="noreferrer" title="Spotify">
+                        <img src="billeder/ikoner/spotify.png" alt="social" class="icon"></a>
+
+                    <a href="https://music.apple.com/dk/artist/the-white-album/556251451?l=da" target="_blank" rel="noreferrer" title="Apple Music">
+                        <img src="billeder/ikoner/apple_music.jpeg" alt="social" class="icon"></a>
+
+                    <a href="https://www.bandsintown.com/a/164526-the-white-album" target="_blank" rel="noreferrer" title="BandsInTown">
+                        <img src="billeder/ikoner/bandsintown.png" alt="social" class="icon"></a>
+                </div>
+            </div>
+            <p class="footertext">© The White Album 2020</p>
+        </footer>
+    </div>
+    <script src="script_eng.js"></script>
+</body></html>
